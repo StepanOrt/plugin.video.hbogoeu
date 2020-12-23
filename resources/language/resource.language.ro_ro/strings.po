@@ -497,3 +497,7 @@ msgstr "Cache golit pentru subtitrări"
 msgctxt "#30815"
 msgid "Clean subtitles cache"
 msgstr "Golește cache pentru subtitrări"
+
+msgctxt "#30816"
+msgid "Proxy"
+msgstr ""

@@ -496,3 +496,7 @@ msgstr "Cache napisów wyczyszczone"
 msgctxt "#30815"
 msgid "Clean subtitles cache"
 msgstr "Wyczyść cache napisów"
+
+msgctxt "#30816"
+msgid "Proxy"
+msgstr ""
