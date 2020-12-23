@@ -31,7 +31,7 @@ except ImportError:
 class HbogoHandler_sp(HbogoHandler):
 
     def __init__(self, handle, base_url, country, forceeng=False):
-        HbogoHandler.__init__(self, handle, base_url)
+        super(HbogoHandler_sp, self).__init__(handle, base_url)
 
         self.LICENSE_SERVER = ""
 
@@ -451,7 +451,7 @@ class HbogoHandler_sp(HbogoHandler):
                     subs_paths = []
                     for sub in subs:
                         self.log("Processing subtitle language code: " + sub.get('lang') + " URL: " + sub.get('href'))
-                        r = requests.get(sub.get('href'))
+                        r = requests.get(sub.get('href'), proxies=self.proxies)
                         with open(folder + sub.get('lang') + ".xml", 'wb') as f:
                             f.write(r.content)
                         ttml = Ttml2Srt(py2_encode(folder + sub.get('lang') + ".xml"), source_fps=25)

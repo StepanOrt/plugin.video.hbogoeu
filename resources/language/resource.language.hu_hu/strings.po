@@ -492,3 +492,7 @@ msgstr "Felirat gyorsítótár kiürítve"
 msgctxt "#30815"
 msgid "Clean subtitles cache"
 msgstr "Felirat gyorsítótár ürítése"
+
+msgctxt "#30816"
+msgid "Proxy"
+msgstr ""

@@ -104,6 +104,14 @@ class HbogoHandler(object):
         else:
             self.usedevkey = False
 
+        self.proxies = None
+        proxy = self.addon.getSetting('proxy')
+        if proxy:
+            self.proxies = {
+                "http": proxy,
+                "https": proxy
+            }
+
         if self.sensitive_debug:
             ret = xbmcgui.Dialog().yesno(self.LB_INFO, self.language(30712), self.language(30714), self.language(30715))
             if not ret:
@@ -248,7 +256,7 @@ class HbogoHandler(object):
         self.log("POST TO HBO URL: " + url)
         self.log("POST TO HBO FORMAT: " + response_format)
         try:
-            r = requests.post(url, headers=headers, data=data)
+            r = requests.post(url, headers=headers, data=data, proxies=self.proxies)
             self.log("POST TO HBO RETURNED STATUS: " + str(r.status_code))
 
             if int(r.status_code) != 200:
@@ -332,7 +340,7 @@ class HbogoHandler(object):
 
         try:
             self.log("GET FROM HBO, requesting from Hbo Go...")
-            r = requests.get(url, headers=self.loggedin_headers)
+            r = requests.get(url, headers=self.loggedin_headers, proxies=self.proxies)
             self.log("GET FROM HBO STATUS: " + str(r.status_code))
 
             if int(r.status_code) != 200:
@@ -368,7 +376,7 @@ class HbogoHandler(object):
         self.log("DEL FROM HBO URL: " + url)
         self.log("DEL FROM HBO RESPONSE FORMAT: " + response_format)
         try:
-            r = requests.delete(url, headers=self.loggedin_headers)
+            r = requests.delete(url, headers=self.loggedin_headers, proxies=self.proxies)
             self.log("DEL FROM HBO STATUS: " + str(r.status_code))
 
             if int(r.status_code) != 200:

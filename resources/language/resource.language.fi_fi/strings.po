@@ -496,3 +496,8 @@ msgstr "Tekstitysvälimuisti tyhjennetty"
 msgctxt "#30815"
 msgid "Clean subtitles cache"
 msgstr "Tyhjennä tekstitysvälimuisti"
+
+msgctxt "#30816"
+msgid "Proxy"
+msgstr ""
+

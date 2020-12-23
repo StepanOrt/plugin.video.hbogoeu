@@ -489,3 +489,7 @@ msgstr "Vyrovnávacia pamäť titulkov vymazaná"
 msgctxt "#30815"
 msgid "Clean subtitles cache"
 msgstr "Vymazať vyrovnávaciu pamäť titulkov"
+
+msgctxt "#30816"
+msgid "Proxy"
+msgstr ""

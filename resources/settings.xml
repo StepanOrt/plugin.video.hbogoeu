@@ -57,5 +57,7 @@
         <setting label="30691" type="bool" id="sensitivedebug" default="false"/>
         <setting label="30809" type="lsep"/>
         <setting label="30809" type="bool" id="usedevkey" default="true"/>
+        <setting label="30816" type="lsep"/>
+        <setting label="30816" type="text" id="proxy" default=""/>
     </category>
 </settings>

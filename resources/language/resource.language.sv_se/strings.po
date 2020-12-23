@@ -493,3 +493,7 @@ msgstr "Undertextcachen är tömd"
 msgctxt "#30815"
 msgid "Clean subtitles cache"
 msgstr "Töm undertextcachen"
+
+msgctxt "#30816"
+msgid "Proxy"
+msgstr ""

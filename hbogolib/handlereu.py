@@ -32,7 +32,7 @@ from kodi_six.utils import py2_encode  # type: ignore
 class HbogoHandler_eu(HbogoHandler):
 
     def __init__(self, handle, base_url, country, forceeng=False):
-        HbogoHandler.__init__(self, handle, base_url)
+        super(HbogoHandler_eu, self).__init__(handle, base_url)
         self.operator_name = ""
         self.op_id = ""
         self.COUNTRY_CODE_SHORT = ""
@@ -191,8 +191,8 @@ class HbogoHandler_eu(HbogoHandler):
         url_basic_operator = 'https://api.ugw.hbogo.eu/v3.0/Operators/' + country[3] + '/JSON/' + country[4] + '/COMP'
         url_operators = 'https://' + country[2] + 'gwapi.hbogo.eu/v2.1/Operators/json/' + country[4] + '/COMP'
 
-        json_basic_operators = requests.get(url_basic_operator).json()
-        json_operators = requests.get(url_operators).json()
+        json_basic_operators = requests.get(url_basic_operator, proxies=self.proxies).json()
+        json_operators = requests.get(url_operators, proxies=self.proxies).json()
 
         op_list = []
 
@@ -320,6 +320,7 @@ class HbogoHandler_eu(HbogoHandler):
             self.log("Urls and data: " + str(HbogoConstants.eu_redirect_login[self.op_id]))
 
             hbo_session = requests.session()
+            hbo_session.proxies.update(self.proxies)
 
             hbo_session.headers.update({
                 'Host': self.COUNTRY_CODE_SHORT + 'gwapi.hbogo.eu',
@@ -425,6 +426,7 @@ class HbogoHandler_eu(HbogoHandler):
             hbo_payload['OperatorId'] = self.op_id
 
             cp_session = requests.session()
+            cp_session.proxies.update(self.proxies)
             cp_session.headers.update({
                 'Referer': self.API_HOST_REFERER,
                 'User-Agent': self.UA
@@ -1231,7 +1233,7 @@ class HbogoHandler_eu(HbogoHandler):
                         subs_paths = []
                         for sub in subtitles:
                             self.log("Processing subtitle language code: " + sub['Code'] + " URL: " + sub['Url'])
-                            r = requests.get(sub['Url'])
+                            r = requests.get(sub['Url'], proxies=self.proxies)
                             with open(folder + sub['Code'] + ".srt", 'wb') as f:
                                 f.write(r.content)
                             subs_paths.append(folder + sub['Code'] + ".srt")

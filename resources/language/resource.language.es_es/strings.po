@@ -506,3 +506,7 @@ msgstr ""
 msgctxt "#30815"
 msgid "Clean subtitles cache"
 msgstr ""
+
+msgctxt "#30816"
+msgid "Proxy"
+msgstr ""
